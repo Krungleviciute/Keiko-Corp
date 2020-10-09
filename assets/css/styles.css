@@ -58,6 +58,10 @@
   text-align: left;
 }
 
+[data-theme='dark'] .hero_content > h1 {
+  color: #fff;
+}
+
 .hero_content > p {
   color: var(--text, #757575);
   font-size: var(--xlText);
@@ -139,6 +143,7 @@
   color: var(--heroText);
   line-height: 1.4;
   margin-bottom: 20px;
+  text-align: left;
 }
 .feature_one,
 .feature_two,
@@ -153,10 +158,41 @@
 .feature-link {
   margin-top: 20px;
   text-decoration: none;
-  color: white;
-  background-color:  #ef5b59;
-  padding: 5px;
+  color: #ef5b59;
+  background-color: transparent;
+  padding: 12px;
   border-radius: .25rem;
+  /* transition: all 0.5s; */
+  border: 2px solid #FE6655;
+}
+
+.feature-link span {
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.feature-link span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  /* transition: 0.5s; */
+}
+
+.feature-link:hover span {
+  padding-right: 20px;
+}
+.feature-link:hover{
+  background-color: #ef5b59;
+  color:white;
+}
+
+.feature-link:hover span:after {
+  opacity: 1;
+  right: 0;
+  padding: 0rem;
 }
 
 @media only screen and (max-width: 768px) and (min-width: 730px) {
@@ -609,25 +645,26 @@ ul {
   flex-wrap: wrap;
 }
 
-.wrapper .button-wrapper:nth-child(1):hover .icon {
-  background: #4267b2;
+.wrapper .button:nth-child(1):hover .icon i {
+  color: #4267b2;
 }
 
-.wrapper .button-wrapper:nth-child(2):hover .icon {
-  background: #1da1f2;
+.wrapper .button:nth-child(2):hover .icon i{
+  color: #1da1f2;
 }
 
-.wrapper .button-wrapper:nth-child(3):hover .icon {
-  background: #e1306c;
+.wrapper .button:nth-child(3):hover .icon i{
+  color: #e1306c;
 }
 
-.wrapper .button-wrapper:nth-child(4):hover .icon {
-  background: #ff0000;
+.wrapper .button:nth-child(4):hover .icon i{
+  color: #ff0000;
 }
 
-.wrapper .button-wrapper .icon i {
+.wrapper .button .icon i {
   font-size: 25px;
   line-height: 60px;
+  padding-right: 5px;
   transition: all 0.3s ease-out;
 }
 
@@ -657,10 +694,6 @@ ul {
 
 .wrapper .button:nth-child(4) span {
   color: #ff0000;
-}
-
-h2 {
-  color: green;
 }
 
 /* Tesimonial Section */
@@ -824,16 +857,17 @@ em {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
+  background-color: #f4f7fe;
+  padding: var(--lgPadding) 0;
 }
 
-h2 {
+.pricing-header h2 {
   font-weight: 700;
   font-size: 32px;
   line-height: 36px;
   margin-bottom: 16px;
-  color: #000;
   opacity: 1;
+  color:#000;
 }
 
 p {
@@ -846,6 +880,7 @@ p {
   display: flex;
   align-items: center;
   margin-top: 32px;
+  margin-bottom: var(--xlMargin);
 }
 
 .price-card {
@@ -900,17 +935,18 @@ p {
   font-weight: 400;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px){
   .price-cards {
     flex-direction: column;
   }
-
-  .price-card {
-    width: 327px;
-  }
-
   .price-card:nth-of-type(2) {
     margin: 24px 0px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .price-card {
+    width: 327px;
   }
 }
 
